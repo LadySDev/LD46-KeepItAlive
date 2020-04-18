@@ -148,11 +148,17 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Resource.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="scene\MainTitleScene.cpp" />
+    <ClCompile Include="scene\ui\MainTitleButton.cpp" />
+    <ClCompile Include="scene\ui\MainTitlePanel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="scene\MainTitleScene.h" />
+    <ClInclude Include="scene\ui\MainTitleButton.h" />
+    <ClInclude Include="scene\ui\MainTitlePanel.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="openal32.dll" />
@@ -169,6 +175,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="asset\MainTitleUI.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="asset\Eternity Time.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
