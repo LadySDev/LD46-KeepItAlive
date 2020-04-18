@@ -7,6 +7,8 @@ Game::Game(int width, int height, const char* title)
 
 	m_window.setPosition(sf::Vector2i(-1930, -5));
 
+	m_resource = new Resource();
+
 	while (m_window.isOpen())
 	{
 		sf::Event event;
