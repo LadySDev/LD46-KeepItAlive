@@ -11,8 +11,20 @@ Resource::Resource(float scale)
 		EXIT_FAILURE;
 	}
 
-	//Font
+	//FONT
 	if (m_EternityTime.loadFromFile(m_assetPath + "Eternity Time.ttf"))
+	{
+		EXIT_FAILURE;
+	}
+
+	//GAME DAY ACTIONS
+	if (m_gameDayActions.loadFromFile(m_assetPath + "GameDayActions.png"))
+	{
+		EXIT_FAILURE;
+	}
+
+	//ITEMS
+	if (m_items.loadFromFile(m_assetPath + "GameDayActions.png"))
 	{
 		EXIT_FAILURE;
 	}
@@ -23,17 +35,31 @@ Resource::Resource(float scale)
 void Resource::create()
 {
 	//Shape Button
-	m_mainTitleButtonOut.setSize(sf::Vector2f(150.f * m_scale, 28.f * m_scale));
+	m_mainTitleButtonOut.setSize(sf::Vector2f(198.f * m_scale, 50.f * m_scale));
 	m_mainTitleButtonOut.setTexture(&m_mainTitleUI);
-	m_mainTitleButtonOut.setTextureRect(sf::IntRect(0, 0, 150.f, 28.f));
+	m_mainTitleButtonOut.setTextureRect(sf::IntRect(151.f, 1.f, 198.f, 50.f));
 
-	m_mainTitleButtonOver.setSize(sf::Vector2f(150.f * m_scale, 28.f * m_scale));
-	m_mainTitleButtonOver.setTexture(&m_mainTitleUI);
-	m_mainTitleButtonOver.setTextureRect(sf::IntRect(0, 28.f, 150.f, 28.f));
+	//Shape Action
+	m_gameDayActionUnchecked.setSize(sf::Vector2f(50.f * m_scale, 50.f * m_scale));
+	m_gameDayActionUnchecked.setTexture(&m_gameDayActions);
+	m_gameDayActionUnchecked.setTextureRect(sf::IntRect(0.f, 0.f, 50.f, 50.f));
 
-	m_mainTitleButtonPressed.setSize(sf::Vector2f(150.f * m_scale, 28.f * m_scale));
-	m_mainTitleButtonPressed.setTexture(&m_mainTitleUI);
-	m_mainTitleButtonPressed.setTextureRect(sf::IntRect(0, 56.f, 150.f, 28.f));
+	m_gameDayActionChecked.setSize(sf::Vector2f(50.f * m_scale, 50.f * m_scale));
+	m_gameDayActionChecked.setTexture(&m_gameDayActions);
+	m_gameDayActionChecked.setTextureRect(sf::IntRect(0.f, 50.f, 50.f, 50.f));
+
+	m_gameDayActionButtonOut.setSize(sf::Vector2f(264.f * m_scale, 50.f * m_scale));
+	m_gameDayActionButtonOut.setTexture(&m_gameDayActions);
+	m_gameDayActionButtonOut.setTextureRect(sf::IntRect(52.f, 1.f, 264.f, 50.f));
+
+	m_gameDayActionVerticalBar.setSize(sf::Vector2f(16.f * m_scale, 459.f * m_scale));
+	m_gameDayActionVerticalBar.setTexture(&m_gameDayActions);
+	m_gameDayActionVerticalBar.setTextureRect(sf::IntRect(317.f, 1.f, 16.f, 459.f));
+
+	//ITEMS
+	m_itemEggplant.setSize(sf::Vector2f(36.f * m_scale, 36.f * m_scale));
+	m_itemEggplant.setTexture(&m_items);
+	m_itemEggplant.setTextureRect(sf::IntRect(0.f, 0.f, 36.f, 36.f));
 }
 
 sf::RectangleShape* Resource::getShape(std::string name)
@@ -42,13 +68,25 @@ sf::RectangleShape* Resource::getShape(std::string name)
 	{
 		return &m_mainTitleButtonOut;
 	}
-	else if (name == "mainTitleButtonOver")
+	else if (name == "gameDayActionUnchecked")
 	{
-		return &m_mainTitleButtonOver;
+		return &m_gameDayActionUnchecked;
 	}
-	else if (name == "mainTitleButtonPressed")
+	else if (name == "gameDayActionChecked")
 	{
-		return &m_mainTitleButtonPressed;
+		return&m_gameDayActionChecked;
+	}
+	else if (name == "gameDayActionButtonOut")
+	{
+		return&m_gameDayActionButtonOut;
+	}
+	else if (name == "gameDayActionVerticalBar")
+	{
+		return&m_gameDayActionVerticalBar;
+	}
+	else if (name == "itemEggplant")
+	{
+		return&m_itemEggplant;
 	}
 	else
 	{

@@ -10,7 +10,7 @@ Game::Game(int width, int height, const char* title, float scale)
 
 	m_resource = new Resource(m_scale);
 
-	m_mainTitleScene = new MainTitleScene(this);
+	launchMainTitleScene();
 
 	sf::Clock clock;
 	while (m_window.isOpen())
@@ -27,13 +27,13 @@ Game::Game(int width, int height, const char* title, float scale)
 
 			sf::Vector2f mousePosition = sf::Vector2f(sf::Mouse::getPosition(m_window));
 
-			m_mainTitleScene->processEvent(event, mousePosition);
+			processEventCurrentScene(event, mousePosition);
 		}
 
-		m_mainTitleScene->update(deltaTime);
+		updateCurrentScene(deltaTime);
 
 		m_window.clear();
-		m_mainTitleScene->render(&m_window);
+		renderCurrentScene(&m_window);
 		m_window.display();
 	}
 }
@@ -51,6 +51,66 @@ sf::Vector2f Game::getSize()
 float Game::getScale()
 {
 	return m_scale;
+}
+
+void Game::launchMainTitleScene()
+{
+	resetAllScene();
+	m_mainTitleScene = new MainTitleScene(this);
+}
+
+void Game::launchGameScene()
+{
+	resetAllScene();
+	m_gameScene = new GameScene(this);
+}
+
+void Game::processEventCurrentScene(sf::Event event, sf::Vector2f mousePosition)
+{
+	if (m_mainTitleScene != NULL)
+	{
+		m_mainTitleScene->processEvent(event, mousePosition);
+	}
+	else if (m_gameScene != NULL)
+	{
+		m_gameScene->processEvent(event, mousePosition);
+	}
+}
+
+void Game::updateCurrentScene(sf::Time deltaTime)
+{
+	if (m_mainTitleScene != NULL)
+	{
+		m_mainTitleScene->update(deltaTime);
+	}
+	else if (m_gameScene != NULL)
+	{
+		m_gameScene->update(deltaTime);
+	}
+}
+
+void Game::renderCurrentScene(sf::RenderWindow* window)
+{
+	if (m_mainTitleScene != NULL)
+	{
+		m_mainTitleScene->render(window);
+	}
+	else if (m_gameScene != NULL)
+	{
+		m_gameScene->render(window);
+	}
+}
+
+void Game::resetAllScene()
+{
+	if (m_mainTitleScene != NULL)
+	{
+		m_mainTitleScene = NULL;
+	}
+	else if (m_gameScene != NULL)
+	{
+		m_gameScene = NULL;
+	}
 }
 
 void Game::close()

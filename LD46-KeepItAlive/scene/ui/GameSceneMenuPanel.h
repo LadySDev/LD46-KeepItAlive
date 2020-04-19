@@ -1,15 +1,17 @@
 #pragma once
 
 #include "../../Game.h"
-
 class Game;
 
 #include "Button.h"
 
-class MainTitlePanel
+#include "../GameScene.h"
+class GameScene;
+
+class GameSceneMenuPanel
 {
 public:
-	MainTitlePanel(Game* game, sf::Vector2f size, sf::Vector2f position, sf::Vector2f origin);
+	GameSceneMenuPanel(Game* game, GameScene* gameScene);
 
 	virtual void processEvent(sf::Event event, sf::Vector2f mousePosition);
 	virtual void update(sf::Time deltaTime);
@@ -17,14 +19,13 @@ public:
 
 private:
 	Game* m_game;
+	GameScene* m_gameScene;
 
 	sf::RectangleShape m_shape;
 
 	sf::Color m_colorText;
 
-	//BUTTON NEW GAME
+	Button* m_btnResume;
 	Button* m_btnNewGame;
-
-	//BUTTON QUIT
 	Button* m_btnQuit;
 };

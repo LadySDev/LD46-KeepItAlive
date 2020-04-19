@@ -3,12 +3,12 @@
 #include <SFML/Graphics.hpp>
 #include <functional>
 
-class MainTitleButton
+class Button
 {
 public:
-	MainTitleButton(sf::RectangleShape shape, sf::Text text);
+	Button(sf::RectangleShape shape, sf::Text text);
 
-	virtual void processEvent(sf::Event event, sf::Vector2f mousePosition);
+	virtual bool processEvent(sf::Event event, sf::Vector2f mousePosition);
 	virtual void update(sf::Time deltaTime);
 	virtual void render(sf::RenderWindow* window);
 

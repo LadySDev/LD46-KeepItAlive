@@ -119,12 +119,12 @@
       <AdditionalIncludeDirectories>E:\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>E:\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-window.lib;sfml-graphics.lib;sfml-system.lib;sfml-audio.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-window.lib;sfml-graphics.lib;sfml-system.lib;sfml-audio.lib;sfml-main.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -145,19 +145,33 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="item\Seed.cpp" />
+    <ClCompile Include="item\SeedManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Resource.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="scene\GameScene.cpp" />
     <ClCompile Include="scene\MainTitleScene.cpp" />
-    <ClCompile Include="scene\ui\MainTitleButton.cpp" />
+    <ClCompile Include="scene\ui\Button.cpp" />
+    <ClCompile Include="scene\ui\GameSceneDayActionPanel.cpp" />
+    <ClCompile Include="scene\ui\GameSceneDayPanel.cpp" />
+    <ClCompile Include="scene\ui\GameSceneMenuPanel.cpp" />
     <ClCompile Include="scene\ui\MainTitlePanel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Inventory.h" />
+    <ClInclude Include="item\Seed.h" />
+    <ClInclude Include="item\SeedManager.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="scene\GameScene.h" />
     <ClInclude Include="scene\MainTitleScene.h" />
-    <ClInclude Include="scene\ui\MainTitleButton.h" />
+    <ClInclude Include="scene\ui\GameSceneDayActionPanel.h" />
+    <ClInclude Include="scene\ui\GameSceneDayPanel.h" />
+    <ClInclude Include="scene\ui\Button.h" />
+    <ClInclude Include="scene\ui\GameSceneMenuPanel.h" />
     <ClInclude Include="scene\ui\MainTitlePanel.h" />
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +188,8 @@
     <None Include="sfml-window-d-2.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="asset\GameDayActions.png" />
+    <Image Include="asset\Items.png" />
     <Image Include="asset\MainTitleUI.png" />
   </ItemGroup>
   <ItemGroup>

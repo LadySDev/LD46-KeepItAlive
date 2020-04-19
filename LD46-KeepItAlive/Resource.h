@@ -24,6 +24,22 @@ private:
 	sf::RectangleShape m_mainTitleButtonOut;
 	sf::RectangleShape m_mainTitleButtonOver;
 	sf::RectangleShape m_mainTitleButtonPressed;
-	//Font
+	
+	//FONT
 	sf::Font m_EternityTime;
+
+	//GAME DAY ACTIONS
+	//Texture
+	sf::Texture m_gameDayActions;
+	//Shape Action
+	sf::RectangleShape m_gameDayActionUnchecked;
+	sf::RectangleShape m_gameDayActionChecked;
+	sf::RectangleShape m_gameDayActionButtonOut;
+	sf::RectangleShape m_gameDayActionVerticalBar;
+
+	//ITEMS
+	//Texture
+	sf::Texture m_items;
+	//Shape Item
+	sf::RectangleShape m_itemEggplant;
 };
