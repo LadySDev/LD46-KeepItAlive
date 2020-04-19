@@ -10,9 +10,9 @@ GameSceneDayActionPanel::GameSceneDayActionPanel(Game* game, GameScene* gameScen
 	m_shape.setSize(sf::Vector2f(584 * m_game->getScale(), m_game->getSize().y));
 	m_shape.setPosition(sf::Vector2f(m_game->getSize().x - m_shape.getSize().x, 0));
 	m_shape.setOrigin(sf::Vector2f(0, 0));
-	m_shape.setFillColor(sf::Color::Yellow);
+	m_shape.setFillColor(sf::Color(102, 102, 102));
 
-	m_colorTextButton = sf::Color(239, 132, 100);
+	m_colorTextButton = sf::Color::White;
 
 	//TITLE ACTIONS
 	m_textActions.setFont(*m_game->getResource()->getFont("eternityTime"));

@@ -122,6 +122,12 @@
     <Image Include="asset\Items.png">
       <Filter>Fichiers de ressources</Filter>
     </Image>
+    <Image Include="asset\Ecran_titre_1.2.bmp">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="asset\Visages.bmp">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="asset\Eternity Time.ttf" />

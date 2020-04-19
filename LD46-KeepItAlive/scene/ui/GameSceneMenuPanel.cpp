@@ -10,11 +10,11 @@ GameSceneMenuPanel::GameSceneMenuPanel(Game* game, GameScene* gameScene)
 	m_shape.setOrigin(sf::Vector2f(m_shape.getGlobalBounds().width / 2, m_shape.getGlobalBounds().height / 2));
 	m_shape.setFillColor(sf::Color::White);
 
-	m_colorText = sf::Color(239, 132, 100);
+	m_colorText = sf::Color::White;
 
 	//Button Resume
 	sf::RectangleShape shapeResume = *m_game->getResource()->getShape("mainTitleButtonOut");
-	shapeResume.setPosition(sf::Vector2f(m_shape.getPosition().x, m_shape.getPosition().y - shapeResume.getGlobalBounds().height - 5));
+	shapeResume.setPosition(sf::Vector2f(m_shape.getPosition().x, m_shape.getPosition().y - shapeResume.getGlobalBounds().height - (shapeResume.getGlobalBounds().height / 2) - 7.5));
 	shapeResume.setOrigin(sf::Vector2f(shapeResume.getGlobalBounds().width / 2, shapeResume.getGlobalBounds().height / 2));
 
 	sf::Text textResume;
@@ -48,9 +48,27 @@ GameSceneMenuPanel::GameSceneMenuPanel(Game* game, GameScene* gameScene)
 		m_game->launchGameScene();
 	};
 
+	//BUTTON TITLE
+	sf::RectangleShape shapeTitle = *m_game->getResource()->getShape("mainTitleButtonOut");
+	shapeTitle.setPosition(sf::Vector2f(shapeNewGame.getPosition().x, shapeNewGame.getPosition().y + shapeNewGame.getSize().y + 5));
+	shapeTitle.setOrigin(sf::Vector2f(shapeTitle.getGlobalBounds().width / 2, shapeTitle.getGlobalBounds().height / 2));
+
+	sf::Text textTitle;
+	textTitle.setFont(*m_game->getResource()->getFont("eternityTime"));
+	textTitle.setCharacterSize(20 * m_game->getScale());
+	textTitle.setFillColor(m_colorText);
+	textTitle.setString("TITLE");
+	textTitle.setPosition(sf::Vector2f(shapeTitle.getPosition().x, shapeTitle.getPosition().y));
+	textTitle.setOrigin(sf::Vector2f(textTitle.getGlobalBounds().width / 2, textTitle.getGlobalBounds().height / 2));
+
+	m_btnTitle = new Button(shapeTitle, textTitle);
+	m_btnTitle->onClick = [this] {
+		m_game->launchMainTitleScene();
+	};
+
 	//BUTTON QUIT
 	sf::RectangleShape shapeQuit = *m_game->getResource()->getShape("mainTitleButtonOut");
-	shapeQuit.setPosition(sf::Vector2f(shapeNewGame.getPosition().x, shapeNewGame.getPosition().y + shapeNewGame.getSize().y + 5));
+	shapeQuit.setPosition(sf::Vector2f(shapeTitle.getPosition().x, shapeTitle.getPosition().y + shapeTitle.getSize().y + 5));
 	shapeQuit.setOrigin(sf::Vector2f(shapeQuit.getGlobalBounds().width / 2, shapeQuit.getGlobalBounds().height / 2));
 
 	sf::Text textQuit;
@@ -71,6 +89,7 @@ void GameSceneMenuPanel::processEvent(sf::Event event, sf::Vector2f mousePositio
 {
 	m_btnResume->processEvent(event, mousePosition);
 	m_btnNewGame->processEvent(event, mousePosition);
+	m_btnTitle->processEvent(event, mousePosition);
 	m_btnQuit->processEvent(event, mousePosition);
 }
 
@@ -78,6 +97,7 @@ void GameSceneMenuPanel::update(sf::Time deltaTime)
 {
 	m_btnResume->update(deltaTime);
 	m_btnNewGame->update(deltaTime);
+	m_btnTitle->update(deltaTime);
 	m_btnQuit->update(deltaTime);
 }
 
@@ -90,6 +110,9 @@ void GameSceneMenuPanel::render(sf::RenderWindow* window)
 
 	//BUTTON NEW GAME
 	m_btnNewGame->render(window);
+
+	//BUTTON TITLE
+	m_btnTitle->render(window);
 
 	//BUTTON QUIT
 	m_btnQuit->render(window);

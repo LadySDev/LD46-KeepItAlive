@@ -9,7 +9,7 @@ class Game;
 class MainTitlePanel
 {
 public:
-	MainTitlePanel(Game* game, sf::Vector2f size, sf::Vector2f position, sf::Vector2f origin);
+	MainTitlePanel(Game* game);
 
 	virtual void processEvent(sf::Event event, sf::Vector2f mousePosition);
 	virtual void update(sf::Time deltaTime);

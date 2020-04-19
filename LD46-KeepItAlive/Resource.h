@@ -19,8 +19,10 @@ private:
 
 	//MAIN TITLE
 	//Texture
+	sf::Texture m_mainTitleBG;
 	sf::Texture m_mainTitleUI;
 	//Shape Button
+	sf::RectangleShape m_shapeMainTitleBG;
 	sf::RectangleShape m_mainTitleButtonOut;
 	sf::RectangleShape m_mainTitleButtonOver;
 	sf::RectangleShape m_mainTitleButtonPressed;

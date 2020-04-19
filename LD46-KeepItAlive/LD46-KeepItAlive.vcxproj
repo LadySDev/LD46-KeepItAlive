@@ -188,9 +188,11 @@
     <None Include="sfml-window-d-2.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="asset\Ecran_titre_1.2.bmp" />
     <Image Include="asset\GameDayActions.png" />
     <Image Include="asset\Items.png" />
     <Image Include="asset\MainTitleUI.png" />
+    <Image Include="asset\Visages.bmp" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="asset\Eternity Time.ttf" />

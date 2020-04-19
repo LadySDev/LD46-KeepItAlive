@@ -1,19 +1,20 @@
 #include "MainTitlePanel.h"
 
-MainTitlePanel::MainTitlePanel(Game* game, sf::Vector2f size, sf::Vector2f position, sf::Vector2f origin)
+MainTitlePanel::MainTitlePanel(Game* game)
 {
 	m_game = game;
 
-	m_shape.setSize(size);
-	m_shape.setPosition(position);
-	m_shape.setOrigin(origin);
+	m_shape = *m_game->getResource()->getShape("shapeMainTitleBG");
+	//m_shape.setSize(m_game->getSize().x, m_game->getSize().y);
+	m_shape.setPosition(m_game->getSize().x / 2, m_game->getSize().y / 2);
+	m_shape.setOrigin(m_shape.getSize().x / 2, m_shape.getSize().y / 2);
 	m_shape.setFillColor(sf::Color::White);
 
-	m_colorText = sf::Color(239, 132, 100);
+	m_colorText = sf::Color::White;
 
 	//BUTTON NEW GAME
 	sf::RectangleShape shapeNewGame = *m_game->getResource()->getShape("mainTitleButtonOut");
-	shapeNewGame.setPosition(sf::Vector2f(m_shape.getPosition().x, m_shape.getPosition().y - shapeNewGame.getGlobalBounds().height / 2 - 5));
+	shapeNewGame.setPosition(sf::Vector2f(m_shape.getPosition().x, m_shape.getPosition().y + (m_game->getSize().y / 2) - shapeNewGame.getGlobalBounds().height / 2 - (100 * m_game->getScale())));
 	shapeNewGame.setOrigin(sf::Vector2f(shapeNewGame.getGlobalBounds().width / 2, shapeNewGame.getGlobalBounds().height / 2));
 
 	sf::Text textNewGame;

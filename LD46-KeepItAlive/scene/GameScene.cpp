@@ -10,7 +10,7 @@ GameScene::GameScene(Game* game)
 
 	m_dayPanel = new GameSceneDayPanel(m_game, this);
 
-	m_colorText = sf::Color(239, 132, 100);
+	m_colorText = sf::Color::White;
 
 	sf::RectangleShape shapeMenu = *m_game->getResource()->getShape("mainTitleButtonOut");
 	shapeMenu.setPosition(sf::Vector2f(m_game->getSize().x - shapeMenu.getGlobalBounds().width - 5, 5));

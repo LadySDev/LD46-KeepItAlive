@@ -6,6 +6,11 @@ Resource::Resource(float scale)
 	m_scale = scale;
 
 	//MAIN TITLE
+	if (m_mainTitleBG.loadFromFile(m_assetPath + "Ecran_titre_1.2.bmp"))
+	{
+		EXIT_FAILURE;
+	}
+
 	if (m_mainTitleUI.loadFromFile(m_assetPath + "MainTitleUI.png"))
 	{
 		EXIT_FAILURE;
@@ -34,6 +39,10 @@ Resource::Resource(float scale)
 
 void Resource::create()
 {
+	m_shapeMainTitleBG.setSize(sf::Vector2f(1920.f * m_scale, 1080.f * m_scale));
+	m_shapeMainTitleBG.setTexture(&m_mainTitleBG);
+	m_shapeMainTitleBG.setTextureRect(sf::IntRect(0.f, 0.f, 1920.f, 1080.f));
+
 	//Shape Button
 	m_mainTitleButtonOut.setSize(sf::Vector2f(198.f * m_scale, 50.f * m_scale));
 	m_mainTitleButtonOut.setTexture(&m_mainTitleUI);
@@ -64,7 +73,11 @@ void Resource::create()
 
 sf::RectangleShape* Resource::getShape(std::string name)
 {
-	if (name == "mainTitleButtonOut")
+	if (name == "shapeMainTitleBG")
+	{
+		return &m_shapeMainTitleBG;
+	}
+	else if (name == "mainTitleButtonOut")
 	{
 		return &m_mainTitleButtonOut;
 	}

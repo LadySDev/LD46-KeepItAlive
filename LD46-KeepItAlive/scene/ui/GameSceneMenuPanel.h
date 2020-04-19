@@ -27,5 +27,6 @@ private:
 
 	Button* m_btnResume;
 	Button* m_btnNewGame;
+	Button* m_btnTitle;
 	Button* m_btnQuit;
 };
