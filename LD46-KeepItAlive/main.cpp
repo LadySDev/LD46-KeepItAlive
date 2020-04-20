@@ -19,7 +19,7 @@ int main()
 		else if (mode.width == 1280 && mode.height == 720)
 		{
 			index = i;
-			scale = 0.66;
+			scale = (1280.f/1920.f);
 			break;
 
 		}

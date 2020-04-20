@@ -144,6 +144,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="character\Children.cpp" />
+    <ClCompile Include="character\Player.cpp" />
+    <ClCompile Include="field\Field.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="item\Seed.cpp" />
@@ -155,11 +158,15 @@
     <ClCompile Include="scene\MainTitleScene.cpp" />
     <ClCompile Include="scene\ui\Button.cpp" />
     <ClCompile Include="scene\ui\GameSceneDayActionPanel.cpp" />
+    <ClCompile Include="scene\ui\GameSceneDayFieldPanel.cpp" />
     <ClCompile Include="scene\ui\GameSceneDayPanel.cpp" />
     <ClCompile Include="scene\ui\GameSceneMenuPanel.cpp" />
     <ClCompile Include="scene\ui\MainTitlePanel.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="character\Children.h" />
+    <ClInclude Include="character\Player.h" />
+    <ClInclude Include="field\Field.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="item\Seed.h" />
@@ -169,6 +176,7 @@
     <ClInclude Include="scene\GameScene.h" />
     <ClInclude Include="scene\MainTitleScene.h" />
     <ClInclude Include="scene\ui\GameSceneDayActionPanel.h" />
+    <ClInclude Include="scene\ui\GameSceneDayFieldPanel.h" />
     <ClInclude Include="scene\ui\GameSceneDayPanel.h" />
     <ClInclude Include="scene\ui\Button.h" />
     <ClInclude Include="scene\ui\GameSceneMenuPanel.h" />
@@ -188,11 +196,13 @@
     <None Include="sfml-window-d-2.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="asset\Champs.bmp" />
     <Image Include="asset\Ecran_titre_1.2.bmp" />
     <Image Include="asset\GameDayActions.png" />
+    <Image Include="asset\GameDayField.png" />
     <Image Include="asset\Items.png" />
     <Image Include="asset\MainTitleUI.png" />
-    <Image Include="asset\Visages.bmp" />
+    <Image Include="asset\Visages.png" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="asset\Eternity Time.ttf" />

@@ -9,6 +9,9 @@ class GameScene;
 #include "GameSceneDayActionPanel.h"
 class GameSceneDayActionPanel;
 
+#include "GameSceneDayFieldPanel.h"
+class GameSceneDayFieldPanel;
+
 class GameSceneDayPanel
 {
 public:
@@ -21,5 +24,6 @@ public:
 private:
 	Game* m_game;
 	GameScene* m_gameScene;
-	GameSceneDayActionPanel* m_panelAction;
+	GameSceneDayActionPanel* m_actionPanel;
+	GameSceneDayFieldPanel* m_fieldPanel;
 };

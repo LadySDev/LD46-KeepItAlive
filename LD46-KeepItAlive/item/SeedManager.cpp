@@ -2,7 +2,7 @@
 
 SeedManager::SeedManager()
 {
-	m_seeds["eggplant"] = new Seed("eggplant", 20, 30);
+	m_seeds["eggplant"] = new Seed("eggplant", 20, 30, 1);
 }
 
 Seed* SeedManager::getSeed(std::string name)

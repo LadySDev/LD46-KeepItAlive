@@ -44,4 +44,22 @@ private:
 	sf::Texture m_items;
 	//Shape Item
 	sf::RectangleShape m_itemEggplant;
+
+	//GAME DAY FIELD
+	//Texture
+	sf::Texture m_gameDayField;
+	sf::Texture m_charactersPhoto;
+	sf::Texture m_field;
+	//Shape Border Character;
+	sf::RectangleShape m_shapeBorderCharacter;
+	//Shape Photo Player
+	sf::RectangleShape m_shapePlayer;
+	//Shape Photo Children
+	sf::RectangleShape m_shapeChildren;
+	//Shape Border Character State
+	sf::RectangleShape m_shapeBorderCharacterState;
+	//Shape Character State
+	sf::RectangleShape m_shapeCharacterState;
+	//Shape field
+	sf::RectangleShape m_shapeField;
 };

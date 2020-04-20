@@ -5,7 +5,6 @@ MainTitlePanel::MainTitlePanel(Game* game)
 	m_game = game;
 
 	m_shape = *m_game->getResource()->getShape("shapeMainTitleBG");
-	//m_shape.setSize(m_game->getSize().x, m_game->getSize().y);
 	m_shape.setPosition(m_game->getSize().x / 2, m_game->getSize().y / 2);
 	m_shape.setOrigin(m_shape.getSize().x / 2, m_shape.getSize().y / 2);
 	m_shape.setFillColor(sf::Color::White);
@@ -32,7 +31,7 @@ MainTitlePanel::MainTitlePanel(Game* game)
 
 	//BUTTON QUIT
 	sf::RectangleShape shapeQuit = *m_game->getResource()->getShape("mainTitleButtonOut");
-	shapeQuit.setPosition(sf::Vector2f(shapeNewGame.getPosition().x, shapeNewGame.getPosition().y + shapeNewGame.getSize().y + 5));
+	shapeQuit.setPosition(sf::Vector2f(shapeNewGame.getPosition().x, shapeNewGame.getPosition().y + shapeNewGame.getSize().y + (7.57 * m_game->getScale())));
 	shapeQuit.setOrigin(sf::Vector2f(shapeQuit.getGlobalBounds().width / 2, shapeQuit.getGlobalBounds().height / 2));
 
 	sf::Text textQuit;

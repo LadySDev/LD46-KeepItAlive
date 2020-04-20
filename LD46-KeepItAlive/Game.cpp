@@ -10,6 +10,19 @@ Game::Game(int width, int height, const char* title, float scale)
 
 	m_resource = new Resource(m_scale);
 
+	m_characterStates = {"satiated", "hungry", "starved", "dead"};
+
+	m_player = new Player(this);
+	m_player->setState(m_characterStates[0]);
+	m_player->setAlimentQuantity(10);
+
+	m_children = new Children(this);
+	m_children->setState(m_characterStates[0]);
+	m_children->setAlimentQuantity(10);
+
+	m_day = 1;
+	m_aliment = 40;
+
 	launchMainTitleScene();
 
 	sf::Clock clock;
@@ -51,6 +64,41 @@ sf::Vector2f Game::getSize()
 float Game::getScale()
 {
 	return m_scale;
+}
+
+std::vector<std::string> Game::getCharacterStates()
+{
+	return m_characterStates;
+}
+
+Player* Game::getPlayer()
+{
+	return m_player;
+}
+
+Children* Game::getChildren()
+{
+	return m_children;
+}
+
+int Game::getDay()
+{
+	return m_day;
+}
+
+void Game::addADay()
+{
+	m_day = m_day + 1;
+}
+
+int Game::getAliment()
+{
+	return m_aliment;
+}
+
+void Game::addAliment(int quantity)
+{
+	m_aliment = m_aliment + quantity;
 }
 
 void Game::launchMainTitleScene()

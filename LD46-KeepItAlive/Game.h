@@ -4,6 +4,11 @@
 
 #include "Resource.h"
 
+#include "character/Player.h"
+class Player;
+#include "character/Children.h"
+class Children;
+
 #include "scene/MainTitleScene.h"
 class MainTitleScene;
 
@@ -19,6 +24,13 @@ public:
 
 	sf::Vector2f getSize();
 	float getScale();
+	std::vector< std::string> getCharacterStates();
+	Player* getPlayer();
+	Children* getChildren();
+	int getDay();
+	void addADay();
+	int getAliment();
+	void addAliment(int quantity);
 
 	void launchMainTitleScene();
 	void launchGameScene();
@@ -28,6 +40,13 @@ private:
 	sf::RenderWindow m_window;
 	float m_scale;
 	Resource* m_resource;
+
+	std::vector< std::string> m_characterStates;
+
+	Player* m_player;
+	Children* m_children;
+	int m_day;
+	int m_aliment;
 
 	MainTitleScene* m_mainTitleScene;
 	GameScene* m_gameScene;

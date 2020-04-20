@@ -34,6 +34,22 @@ Resource::Resource(float scale)
 		EXIT_FAILURE;
 	}
 
+	//GAME DAY FIELD
+	if (m_gameDayField.loadFromFile(m_assetPath + "GameDayField.png"))
+	{
+		EXIT_FAILURE;
+	}
+
+	if (m_charactersPhoto.loadFromFile(m_assetPath + "Visages.png"))
+	{
+		EXIT_FAILURE;
+	}
+
+	if (m_field.loadFromFile(m_assetPath + "Champs.bmp"))
+	{
+		EXIT_FAILURE;
+	}
+
 	create();
 }
 
@@ -69,6 +85,37 @@ void Resource::create()
 	m_itemEggplant.setSize(sf::Vector2f(36.f * m_scale, 36.f * m_scale));
 	m_itemEggplant.setTexture(&m_items);
 	m_itemEggplant.setTextureRect(sf::IntRect(0.f, 0.f, 36.f, 36.f));
+
+	//GAME DAY FIELD
+	//Shape Border Character
+	m_shapeBorderCharacter.setSize(sf::Vector2f(182.f * m_scale, 235.f * m_scale));
+	m_shapeBorderCharacter.setTexture(&m_gameDayField);
+	m_shapeBorderCharacter.setTextureRect(sf::IntRect(1.f, 1.f, 182.f, 235.f));
+
+	//Shape Photo Player
+	m_shapePlayer.setSize(sf::Vector2f(165.f * m_scale, 218.f * m_scale));
+	m_shapePlayer.setTexture(&m_charactersPhoto);
+	m_shapePlayer.setTextureRect(sf::IntRect(1030.f, 290.f, 335.f, 429.f));
+
+	//Shape Photo Children
+	m_shapeChildren.setSize(sf::Vector2f(165.f * m_scale, 218.f * m_scale));
+	m_shapeChildren.setTexture(&m_charactersPhoto);
+	m_shapeChildren.setTextureRect(sf::IntRect(1415.f, 260.f, 335.f, 429.f));
+
+	//Shape Border Character State
+	m_shapeBorderCharacterState.setSize(sf::Vector2f(182.f * m_scale, 50.f * m_scale));
+	m_shapeBorderCharacterState.setTexture(&m_gameDayField);
+	m_shapeBorderCharacterState.setTextureRect(sf::IntRect(197.f, 1.f, 182.f, 50.f));
+
+	//Shape Character State
+	m_shapeCharacterState.setSize(sf::Vector2f(166.f * m_scale, 34.f * m_scale));
+	m_shapeCharacterState.setTexture(&m_gameDayField);
+	m_shapeCharacterState.setTextureRect(sf::IntRect(205.f, 52.f, 166.f, 34.f));
+
+	//Shape field
+	m_shapeField.setSize(sf::Vector2f(1336.f * m_scale, 1080.f * m_scale));
+	m_shapeField.setTexture(&m_field);
+	m_shapeField.setTextureRect(sf::IntRect(0.f, 0.f, 1336.f, 1080.f));
 }
 
 sf::RectangleShape* Resource::getShape(std::string name)
@@ -100,6 +147,30 @@ sf::RectangleShape* Resource::getShape(std::string name)
 	else if (name == "itemEggplant")
 	{
 		return&m_itemEggplant;
+	}
+	else if (name == "shapeBorderCharacter")
+	{
+		return&m_shapeBorderCharacter;
+	}
+	else if (name == "shapePlayer")
+	{
+		return&m_shapePlayer;
+	}
+	else if (name == "shapeChildren")
+	{
+		return&m_shapeChildren;
+	}
+	else if (name == "shapeBorderCharacterState")
+	{
+		return&m_shapeBorderCharacterState;
+	}
+	else if (name == "shapeCharacterState")
+	{
+		return&m_shapeCharacterState;
+	}
+	else if (name == "shapeField")
+	{
+		return&m_shapeField;
 	}
 	else
 	{

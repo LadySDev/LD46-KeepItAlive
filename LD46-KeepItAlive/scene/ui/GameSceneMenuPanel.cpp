@@ -14,7 +14,7 @@ GameSceneMenuPanel::GameSceneMenuPanel(Game* game, GameScene* gameScene)
 
 	//Button Resume
 	sf::RectangleShape shapeResume = *m_game->getResource()->getShape("mainTitleButtonOut");
-	shapeResume.setPosition(sf::Vector2f(m_shape.getPosition().x, m_shape.getPosition().y - shapeResume.getGlobalBounds().height - (shapeResume.getGlobalBounds().height / 2) - 7.5));
+	shapeResume.setPosition(sf::Vector2f(m_shape.getPosition().x, m_shape.getPosition().y - shapeResume.getGlobalBounds().height - (shapeResume.getGlobalBounds().height / 2) - (11.36 * m_game->getScale())));
 	shapeResume.setOrigin(sf::Vector2f(shapeResume.getGlobalBounds().width / 2, shapeResume.getGlobalBounds().height / 2));
 
 	sf::Text textResume;
@@ -32,7 +32,7 @@ GameSceneMenuPanel::GameSceneMenuPanel(Game* game, GameScene* gameScene)
 
 	//Button New Game
 	sf::RectangleShape shapeNewGame = *m_game->getResource()->getShape("mainTitleButtonOut");
-	shapeNewGame.setPosition(sf::Vector2f(shapeResume.getPosition().x, shapeResume.getPosition().y + shapeResume.getSize().y + 5));
+	shapeNewGame.setPosition(sf::Vector2f(shapeResume.getPosition().x, shapeResume.getPosition().y + shapeResume.getSize().y + (7.57 * m_game->getScale())));
 	shapeNewGame.setOrigin(sf::Vector2f(shapeNewGame.getGlobalBounds().width / 2, shapeNewGame.getGlobalBounds().height / 2));
 
 	sf::Text textNewGame;
@@ -50,7 +50,7 @@ GameSceneMenuPanel::GameSceneMenuPanel(Game* game, GameScene* gameScene)
 
 	//BUTTON TITLE
 	sf::RectangleShape shapeTitle = *m_game->getResource()->getShape("mainTitleButtonOut");
-	shapeTitle.setPosition(sf::Vector2f(shapeNewGame.getPosition().x, shapeNewGame.getPosition().y + shapeNewGame.getSize().y + 5));
+	shapeTitle.setPosition(sf::Vector2f(shapeNewGame.getPosition().x, shapeNewGame.getPosition().y + shapeNewGame.getSize().y + (7.57 * m_game->getScale())));
 	shapeTitle.setOrigin(sf::Vector2f(shapeTitle.getGlobalBounds().width / 2, shapeTitle.getGlobalBounds().height / 2));
 
 	sf::Text textTitle;
@@ -68,7 +68,7 @@ GameSceneMenuPanel::GameSceneMenuPanel(Game* game, GameScene* gameScene)
 
 	//BUTTON QUIT
 	sf::RectangleShape shapeQuit = *m_game->getResource()->getShape("mainTitleButtonOut");
-	shapeQuit.setPosition(sf::Vector2f(shapeTitle.getPosition().x, shapeTitle.getPosition().y + shapeTitle.getSize().y + 5));
+	shapeQuit.setPosition(sf::Vector2f(shapeTitle.getPosition().x, shapeTitle.getPosition().y + shapeTitle.getSize().y + (7.57 * m_game->getScale())));
 	shapeQuit.setOrigin(sf::Vector2f(shapeQuit.getGlobalBounds().width / 2, shapeQuit.getGlobalBounds().height / 2));
 
 	sf::Text textQuit;

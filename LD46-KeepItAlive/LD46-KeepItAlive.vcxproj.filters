@@ -57,6 +57,18 @@
     <ClCompile Include="scene\ui\GameSceneDayActionPanel.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="scene\ui\GameSceneDayFieldPanel.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="character\Player.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="character\Children.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="field\Field.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -98,6 +110,18 @@
     <ClInclude Include="scene\ui\GameSceneDayActionPanel.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="scene\ui\GameSceneDayFieldPanel.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="character\Player.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="character\Children.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="field\Field.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="openal32.dll" />
@@ -125,7 +149,13 @@
     <Image Include="asset\Ecran_titre_1.2.bmp">
       <Filter>Fichiers de ressources</Filter>
     </Image>
-    <Image Include="asset\Visages.bmp">
+    <Image Include="asset\GameDayField.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="asset\Visages.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="asset\Champs.bmp">
       <Filter>Fichiers de ressources</Filter>
     </Image>
   </ItemGroup>

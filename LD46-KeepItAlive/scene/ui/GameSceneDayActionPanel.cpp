@@ -19,14 +19,14 @@ GameSceneDayActionPanel::GameSceneDayActionPanel(Game* game, GameScene* gameScen
 	m_textActions.setCharacterSize(25 * m_game->getScale());
 	m_textActions.setFillColor(m_colorTextButton);
 	m_textActions.setString("ACTIONS");
-	m_textActions.setPosition(sf::Vector2f(m_shape.getPosition().x + m_shape.getSize().x / 2, m_shape.getPosition().y + 70));
+	m_textActions.setPosition(sf::Vector2f(m_shape.getPosition().x + m_shape.getSize().x / 2, m_shape.getPosition().y + (106 * m_game->getScale())));
 	m_textActions.setOrigin(sf::Vector2f(m_textActions.getGlobalBounds().width / 2, m_textActions.getGlobalBounds().height / 2));
 
 	//ACTIONS
 	for (int i = 0; i < 10; i++)
 	{
 		sf::RectangleShape shape = *m_game->getResource()->getShape("gameDayActionUnchecked");
-		shape.setPosition(sf::Vector2f(m_shape.getPosition().x + 5 + (i * (shape.getSize().x + 5)), m_textActions.getPosition().y + 20));
+		shape.setPosition(sf::Vector2f(m_shape.getPosition().x + 5 + (i * (shape.getSize().x + 5)), m_textActions.getPosition().y + (30.3 * m_game->getScale())));
 		shape.setOrigin(sf::Vector2f());
 
 		m_shapeActions.push_back(shape);
@@ -34,7 +34,7 @@ GameSceneDayActionPanel::GameSceneDayActionPanel(Game* game, GameScene* gameScen
 
 	//SHOP
 	sf::RectangleShape shapeShop = *m_game->getResource()->getShape("gameDayActionButtonOut");
-	shapeShop.setPosition(sf::Vector2f(m_shape.getPosition().x + m_shape.getSize().x / 2, m_textActions.getPosition().y + 90));
+	shapeShop.setPosition(sf::Vector2f(m_shape.getPosition().x + m_shape.getSize().x / 2, m_textActions.getPosition().y + (136.36 * m_game->getScale())));
 	shapeShop.setOrigin(sf::Vector2f(shapeShop.getGlobalBounds().width / 2, shapeShop.getGlobalBounds().height / 2));
 
 	sf::Text textShop;
@@ -55,7 +55,7 @@ GameSceneDayActionPanel::GameSceneDayActionPanel(Game* game, GameScene* gameScen
 	m_textInventory.setCharacterSize(25 * m_game->getScale());
 	m_textInventory.setFillColor(m_colorTextButton);
 	m_textInventory.setString("INVENTORY");
-	m_textInventory.setPosition(sf::Vector2f(m_shape.getPosition().x + m_shape.getSize().x / 2, shapeShop.getPosition().y + 50));
+	m_textInventory.setPosition(sf::Vector2f(m_shape.getPosition().x + m_shape.getSize().x / 2, shapeShop.getPosition().y + (75.75 * m_game->getScale())));
 	m_textInventory.setOrigin(sf::Vector2f(m_textInventory.getGlobalBounds().width / 2, m_textInventory.getGlobalBounds().height / 2));
 
 	//INVENTORY
@@ -65,7 +65,7 @@ GameSceneDayActionPanel::GameSceneDayActionPanel(Game* game, GameScene* gameScen
 	for (it = inventorySeeds->begin(); it != inventorySeeds->end(); ++ it)
 	{
 		sf::RectangleShape shapeSeed = *m_game->getResource()->getShape("gameDayActionButtonOut");
-		shapeSeed.setPosition(sf::Vector2f(m_shape.getPosition().x + m_shape.getSize().x / 4 - 3, m_shape.getPosition().y + 240 + (shapeSeed.getGlobalBounds().height / 2) + (shapeSeed.getGlobalBounds().height * m_btnSeeds.size())));
+		shapeSeed.setPosition(sf::Vector2f(m_shape.getPosition().x + m_shape.getSize().x / 4 - (4.54 * m_game->getScale()), m_shape.getPosition().y + (363.63 * m_game->getScale()) + (shapeSeed.getGlobalBounds().height / 2) + (shapeSeed.getGlobalBounds().height * m_btnSeeds.size())));
 		shapeSeed.setOrigin(sf::Vector2f(shapeSeed.getGlobalBounds().width / 2, shapeSeed.getGlobalBounds().height / 2));
 
 		std::string nameSeed = it->first;
@@ -89,14 +89,14 @@ GameSceneDayActionPanel::GameSceneDayActionPanel(Game* game, GameScene* gameScen
 
 	//Bar
 	m_shapeBar = *m_game->getResource()->getShape("gameDayActionVerticalBar");
-	m_shapeBar.setPosition(sf::Vector2f(m_shape.getPosition().x + m_shape.getSize().x / 2, m_shape.getPosition().y + 240));
+	m_shapeBar.setPosition(sf::Vector2f(m_shape.getPosition().x + m_shape.getSize().x / 2, m_shape.getPosition().y + (363.63 * m_game->getScale())));
 	m_shapeBar.setOrigin(sf::Vector2f(m_shapeBar.getGlobalBounds().width / 2, 0));
 
 	//Other
 
 	//BUTTON WATER
 	sf::RectangleShape shapeWater = *m_game->getResource()->getShape("gameDayActionButtonOut");
-	shapeWater.setPosition(sf::Vector2f(m_shape.getPosition().x + m_shape.getSize().x / 2, m_shape.getPosition().y + m_shape.getSize().y - (shapeWater.getGlobalBounds().height * 4) - 15));
+	shapeWater.setPosition(sf::Vector2f(m_shape.getPosition().x + m_shape.getSize().x / 2, m_shape.getPosition().y + m_shape.getSize().y - (shapeWater.getGlobalBounds().height * 4) - (22.72 * m_game->getScale())));
 	shapeWater.setOrigin(sf::Vector2f(shapeWater.getGlobalBounds().width / 2, shapeWater.getGlobalBounds().height / 2));
 
 	sf::Text textWater;
@@ -114,7 +114,7 @@ GameSceneDayActionPanel::GameSceneDayActionPanel(Game* game, GameScene* gameScen
 
 	//BUTTON HARVEST
 	sf::RectangleShape shapeHarvest = *m_game->getResource()->getShape("gameDayActionButtonOut");
-	shapeHarvest.setPosition(sf::Vector2f(m_shape.getPosition().x + m_shape.getSize().x / 2, m_shape.getPosition().y + m_shape.getSize().y - (shapeHarvest.getGlobalBounds().height * 3) - 10));
+	shapeHarvest.setPosition(sf::Vector2f(m_shape.getPosition().x + m_shape.getSize().x / 2, m_shape.getPosition().y + m_shape.getSize().y - (shapeHarvest.getGlobalBounds().height * 3) - (15.15 * m_game->getScale())));
 	shapeHarvest.setOrigin(sf::Vector2f(shapeHarvest.getGlobalBounds().width / 2, shapeHarvest.getGlobalBounds().height / 2));
 
 	sf::Text textHarvest;
@@ -138,7 +138,7 @@ GameSceneDayActionPanel::GameSceneDayActionPanel(Game* game, GameScene* gameScen
 
 	//BUTTON CANCEL
 	sf::RectangleShape shapeCancel = *m_game->getResource()->getShape("gameDayActionButtonOut");
-	shapeCancel.setPosition(sf::Vector2f(m_shape.getPosition().x + m_shape.getSize().x / 2, m_shape.getPosition().y + m_shape.getSize().y - shapeCancel.getGlobalBounds().height - 10));
+	shapeCancel.setPosition(sf::Vector2f(m_shape.getPosition().x + m_shape.getSize().x / 2, m_shape.getPosition().y + m_shape.getSize().y - shapeCancel.getGlobalBounds().height - (15.15 * m_game->getScale())));
 	shapeCancel.setOrigin(sf::Vector2f(shapeCancel.getGlobalBounds().width / 2, shapeCancel.getGlobalBounds().height / 2));
 
 	sf::Text textCancel;

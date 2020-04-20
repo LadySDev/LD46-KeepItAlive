@@ -13,7 +13,7 @@ GameScene::GameScene(Game* game)
 	m_colorText = sf::Color::White;
 
 	sf::RectangleShape shapeMenu = *m_game->getResource()->getShape("mainTitleButtonOut");
-	shapeMenu.setPosition(sf::Vector2f(m_game->getSize().x - shapeMenu.getGlobalBounds().width - 5, 5));
+	shapeMenu.setPosition(sf::Vector2f(m_game->getSize().x - shapeMenu.getGlobalBounds().width - (7.57 * m_game->getScale()), 7.57 * m_game->getScale()));
 	shapeMenu.setOrigin(sf::Vector2f(0, 0));
 
 	sf::Text textMenu;
