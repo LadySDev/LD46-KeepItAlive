@@ -24,7 +24,7 @@ GameScene::GameScene(Game* game)
 	textMenu.setPosition(sf::Vector2f(shapeMenu.getPosition().x + shapeMenu.getGlobalBounds().width / 2, shapeMenu.getPosition().y + shapeMenu.getGlobalBounds().height / 2));
 	textMenu.setOrigin(sf::Vector2f(textMenu.getGlobalBounds().width / 2, textMenu.getGlobalBounds().height / 2));
 
-	m_menu = new Button(shapeMenu, textMenu);
+	m_menu = new Button(m_game, shapeMenu, textMenu);
 	m_menu->onClick = [this] {
 
 	};

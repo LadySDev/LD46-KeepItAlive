@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 class Resource
 {
@@ -11,11 +12,16 @@ public:
 
 	sf::RectangleShape* getShape(std::string name);
 	sf::Font* getFont(std::string name);
-
+	sf::SoundBuffer* getBuffer(std::string name);
 private:
 	std::string m_assetPath;
 
 	float m_scale;
+
+	//AUDIO
+	sf::SoundBuffer m_bufferMusicTitle;
+	sf::SoundBuffer m_bufferBtnOver;
+	sf::SoundBuffer m_bufferBtnPressed;
 
 	//MAIN TITLE
 	//Texture
@@ -62,4 +68,6 @@ private:
 	sf::RectangleShape m_shapeCharacterState;
 	//Shape field
 	sf::RectangleShape m_shapeField;
+	//Shape field Selection
+	sf::RectangleShape m_shapeFieldSelection;
 };

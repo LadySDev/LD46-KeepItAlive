@@ -153,6 +153,7 @@ void Game::resetAllScene()
 {
 	if (m_mainTitleScene != NULL)
 	{
+		m_mainTitleScene->stopMusic();
 		m_mainTitleScene = NULL;
 	}
 	else if (m_gameScene != NULL)

@@ -4,6 +4,7 @@
 class Game;
 
 #include "Button.h"
+class Button;
 
 #include "../GameScene.h"
 class GameScene;

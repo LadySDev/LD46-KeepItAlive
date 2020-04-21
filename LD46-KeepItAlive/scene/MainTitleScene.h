@@ -15,6 +15,7 @@ public:
 	virtual void update(sf::Time deltaTime);
 	virtual void render(sf::RenderWindow* window);
 
+	void stopMusic();
 private:
 	Game* m_game;
 	MainTitlePanel* m_panel;

@@ -11,6 +11,11 @@ void Inventory::addSeed(std::string name, int quantity)
 	if (it != m_seeds.end())
 	{
 		m_seeds[name].second = m_seeds[name].second + quantity;
+
+		if (m_seeds[name].second <= 0)
+		{
+			m_seeds.erase(name);
+		}
 	}
 	else {
 		m_seeds[name] = std::pair<Seed*, int>(m_seedManager->getSeed(name), quantity);

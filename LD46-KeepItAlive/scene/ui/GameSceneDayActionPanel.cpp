@@ -1,9 +1,10 @@
 #include "GameSceneDayActionPanel.h"
 
-GameSceneDayActionPanel::GameSceneDayActionPanel(Game* game, GameScene* gameScene)
+GameSceneDayActionPanel::GameSceneDayActionPanel(Game* game, GameScene* gameScene, GameSceneDayPanel* dayPanel)
 {
 	m_game = game;
 	m_gameScene = gameScene;
+	m_dayPanel = dayPanel;
 	m_seedManager = m_gameScene->getSeedManager();
 	m_inventory = m_gameScene->getInventory();
 
@@ -32,6 +33,8 @@ GameSceneDayActionPanel::GameSceneDayActionPanel(Game* game, GameScene* gameScen
 		m_shapeActions.push_back(shape);
 	}
 
+	m_action = -1;
+
 	//SHOP
 	sf::RectangleShape shapeShop = *m_game->getResource()->getShape("gameDayActionButtonOut");
 	shapeShop.setPosition(sf::Vector2f(m_shape.getPosition().x + m_shape.getSize().x / 2, m_textActions.getPosition().y + (136.36 * m_game->getScale())));
@@ -45,7 +48,7 @@ GameSceneDayActionPanel::GameSceneDayActionPanel(Game* game, GameScene* gameScen
 	textShop.setPosition(sf::Vector2f(shapeShop.getPosition().x, shapeShop.getPosition().y));
 	textShop.setOrigin(sf::Vector2f(textShop.getGlobalBounds().width / 2, textShop.getGlobalBounds().height / 2));
 
-	m_btnShop = new Button(shapeShop, textShop);
+	m_btnShop = new Button(m_game, shapeShop, textShop);
 	m_btnShop->onClick = [this] {
 
 	};
@@ -79,8 +82,17 @@ GameSceneDayActionPanel::GameSceneDayActionPanel(Game* game, GameScene* gameScen
 		textSeed.setPosition(sf::Vector2f(shapeSeed.getPosition().x, shapeSeed.getPosition().y));
 		textSeed.setOrigin(sf::Vector2f(textSeed.getGlobalBounds().width / 2, textSeed.getGlobalBounds().height / 2));
 
-		Button* btnSeed = new Button(shapeSeed, textSeed);
+		sf::Text textSeedQuantity;
+		textSeedQuantity.setFont(*m_game->getResource()->getFont("eternityTime"));
+		textSeedQuantity.setCharacterSize(25 * m_game->getScale());
+		textSeedQuantity.setFillColor(m_colorTextButton);
+		textSeedQuantity.setString(" x" + std::to_string(it->second.second));
+		textSeedQuantity.setPosition(sf::Vector2f(textSeed.getPosition().x + textSeed.getGlobalBounds().width / 2 + (15 * m_game->getScale()), textSeed.getPosition().y - (5 * m_game->getScale())));
+		textSeedQuantity.setOrigin(sf::Vector2f(textSeedQuantity.getGlobalBounds().width / 2, textSeedQuantity.getGlobalBounds().height / 2));
+
+		SeedInventoryButton* btnSeed = new SeedInventoryButton(m_game, shapeSeed, textSeed, textSeedQuantity);
 		btnSeed->onClick = [this] {
+			m_dayPanel->showActionAllowed("eggplant");
 			m_isActionOnGoing = true;
 		};
 
@@ -107,8 +119,9 @@ GameSceneDayActionPanel::GameSceneDayActionPanel(Game* game, GameScene* gameScen
 	textWater.setPosition(sf::Vector2f(shapeWater.getPosition().x, shapeWater.getPosition().y));
 	textWater.setOrigin(sf::Vector2f(textWater.getGlobalBounds().width / 2, textWater.getGlobalBounds().height / 2));
 
-	m_btnWater = new Button(shapeWater, textWater);
+	m_btnWater = new Button(m_game, shapeWater, textWater);
 	m_btnWater->onClick = [this] {
+		m_dayPanel->showActionAllowed("water");
 		m_isActionOnGoing = true;
 	};
 
@@ -125,8 +138,9 @@ GameSceneDayActionPanel::GameSceneDayActionPanel(Game* game, GameScene* gameScen
 	textHarvest.setPosition(sf::Vector2f(shapeHarvest.getPosition().x, shapeHarvest.getPosition().y));
 	textHarvest.setOrigin(sf::Vector2f(textHarvest.getGlobalBounds().width / 2, textHarvest.getGlobalBounds().height / 2));
 
-	m_btnHarvest = new Button(shapeHarvest, textHarvest);
+	m_btnHarvest = new Button(m_game, shapeHarvest, textHarvest);
 	m_btnHarvest->onClick = [this] {
+		m_dayPanel->showActionAllowed("harvest");
 		m_isActionOnGoing = true;
 	};
 
@@ -149,8 +163,9 @@ GameSceneDayActionPanel::GameSceneDayActionPanel(Game* game, GameScene* gameScen
 	textCancel.setPosition(sf::Vector2f(shapeCancel.getPosition().x, shapeCancel.getPosition().y));
 	textCancel.setOrigin(sf::Vector2f(textCancel.getGlobalBounds().width / 2, textCancel.getGlobalBounds().height / 2));
 
-	m_btnCancel = new Button(shapeCancel, textCancel);
+	m_btnCancel = new Button(m_game, shapeCancel, textCancel);
 	m_btnCancel->onClick = [this] {
+		m_dayPanel->showActionAllowed("end");
 		m_isActionOnGoing = false;
 	};
 }
@@ -187,7 +202,18 @@ void GameSceneDayActionPanel::update(sf::Time deltaTime)
 
 		for (int i = 0; i < m_btnSeeds.size(); i++)
 		{
-			m_btnSeeds.at(i)->update(deltaTime);
+			std::string seedName = m_btnSeeds.at(i)->getText();
+			std::transform(seedName.begin(), seedName.end(), seedName.begin(), ::tolower);
+			std::map<std::string, std::pair<Seed*, int>> seeds = *m_inventory->getSeeds();
+			std::map<std::string, std::pair<Seed*, int>>::const_iterator it = seeds.find(seedName);
+			if (it == seeds.end())
+			{
+				m_btnSeeds.erase(m_btnSeeds.begin() + i);
+			}
+			else {
+				m_btnSeeds.at(i)->setQuantity(" x"+ std::to_string(it->second.second));
+				m_btnSeeds.at(i)->update(deltaTime);
+			}
 		}
 
 		m_btnWater->update(deltaTime);
@@ -208,21 +234,39 @@ void GameSceneDayActionPanel::render(sf::RenderWindow* window)
 
 	m_btnShop->render(window);
 
-	window->draw(m_textInventory);
-
-	for (int i = 0; i < m_btnSeeds.size(); i++)
+	if (m_action < 9)
 	{
-		m_btnSeeds.at(i)->render(window);
+		window->draw(m_textInventory);
+
+		for (int i = 0; i < m_btnSeeds.size(); i++)
+		{
+			m_btnSeeds.at(i)->render(window);
+		}
+
+		window->draw(m_shapeBar);
+
+		m_btnWater->render(window);
+		m_btnHarvest->render(window);
 	}
-
-	window->draw(m_shapeBar);
-
-	m_btnWater->render(window);
-	m_btnHarvest->render(window);
+	
 
 	if (m_isActionOnGoing == true)
 	{
 		window->draw(m_shapeActionOnGoing);
 		m_btnCancel->render(window);
 	}
+}
+
+void GameSceneDayActionPanel::useAction()
+{
+	m_action = m_action + 1;
+	if (m_action <= 9)
+	{
+		m_shapeActions[m_action].setTextureRect(sf::IntRect(m_shapeActions[m_action].getTextureRect().left, 50, m_shapeActions[m_action].getTextureRect().width, m_shapeActions[m_action].getTextureRect().height));
+	}
+}
+
+void GameSceneDayActionPanel::endAction()
+{
+	m_isActionOnGoing = false;
 }

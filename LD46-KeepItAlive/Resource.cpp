@@ -5,6 +5,22 @@ Resource::Resource(float scale)
 	m_assetPath = "asset/";
 	m_scale = scale;
 
+	//AUDIO
+	if (!m_bufferMusicTitle.loadFromFile(m_assetPath + "Music-title.wav"))
+	{
+		EXIT_FAILURE;
+	}
+
+	if (!m_bufferBtnOver.loadFromFile(m_assetPath + "blop_2-over.wav"))
+	{
+		EXIT_FAILURE;
+	}
+
+	if (!m_bufferBtnPressed.loadFromFile(m_assetPath + "blop_1-pressed.wav"))
+	{
+		EXIT_FAILURE;
+	}
+
 	//MAIN TITLE
 	if (m_mainTitleBG.loadFromFile(m_assetPath + "Ecran_titre_1.2.bmp"))
 	{
@@ -45,7 +61,7 @@ Resource::Resource(float scale)
 		EXIT_FAILURE;
 	}
 
-	if (m_field.loadFromFile(m_assetPath + "Champs.bmp"))
+	if (m_field.loadFromFile(m_assetPath + "Champs.png"))
 	{
 		EXIT_FAILURE;
 	}
@@ -116,6 +132,11 @@ void Resource::create()
 	m_shapeField.setSize(sf::Vector2f(1336.f * m_scale, 1080.f * m_scale));
 	m_shapeField.setTexture(&m_field);
 	m_shapeField.setTextureRect(sf::IntRect(0.f, 0.f, 1336.f, 1080.f));
+
+	//Shape field selection
+	m_shapeFieldSelection.setSize(sf::Vector2f(94.f * m_scale, 94.f * m_scale));
+	m_shapeFieldSelection.setTexture(&m_gameDayField);
+	m_shapeFieldSelection.setTextureRect(sf::IntRect(380.f, 1.f, 94.f, 94.f));
 }
 
 sf::RectangleShape* Resource::getShape(std::string name)
@@ -172,6 +193,10 @@ sf::RectangleShape* Resource::getShape(std::string name)
 	{
 		return&m_shapeField;
 	}
+	else if (name == "shapeFieldSelection")
+	{
+		return&m_shapeFieldSelection;
+	}
 	else
 	{
 		return nullptr;
@@ -183,6 +208,26 @@ sf::Font* Resource::getFont(std::string name)
 	if (name == "eternityTime")
 	{
 		return &m_EternityTime;
+	}
+	else
+	{
+		return nullptr;
+	}
+}
+
+sf::SoundBuffer* Resource::getBuffer(std::string name)
+{
+	if (name == "btnOver")
+	{
+		return &m_bufferBtnOver;
+	}
+	else if (name == "btnPressed")
+	{
+		return &m_bufferBtnPressed;
+	}
+	else if (name == "musicTitle")
+	{
+		return &m_bufferMusicTitle;
 	}
 	else
 	{

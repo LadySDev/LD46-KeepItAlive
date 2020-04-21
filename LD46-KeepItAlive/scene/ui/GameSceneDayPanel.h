@@ -21,6 +21,9 @@ public:
 	virtual void update(sf::Time deltaTime);
 	virtual void render(sf::RenderWindow* window);
 
+	void showActionAllowed(std::string action);
+	void useAction();
+	void endAction();
 private:
 	Game* m_game;
 	GameScene* m_gameScene;

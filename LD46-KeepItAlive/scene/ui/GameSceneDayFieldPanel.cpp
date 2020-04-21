@@ -1,9 +1,10 @@
 #include "GameSceneDayFieldPanel.h"
 
-GameSceneDayFieldPanel::GameSceneDayFieldPanel(Game* game, GameScene* gameScene)
+GameSceneDayFieldPanel::GameSceneDayFieldPanel(Game* game, GameScene* gameScene, GameSceneDayPanel* dayPanel)
 {
 	m_game = game;
 	m_gameScene = gameScene;
+	m_dayPanel = dayPanel;
 	m_seedManager = m_gameScene->getSeedManager();
 	m_inventory = m_gameScene->getInventory();
 	m_player = m_game->getPlayer();
@@ -44,12 +45,37 @@ GameSceneDayFieldPanel::GameSceneDayFieldPanel(Game* game, GameScene* gameScene)
 	//1//
 	sf::ConvexShape m_shapeField1;
 	m_shapeField1.setPointCount(4);
-	m_shapeField1.setPoint(0, sf::Vector2f(299 * m_game->getScale(), 554 * m_game->getScale()));
-	m_shapeField1.setPoint(1, sf::Vector2f(430 * m_game->getScale(), 556 * m_game->getScale()));
-	m_shapeField1.setPoint(2, sf::Vector2f(371 * m_game->getScale(), 695 * m_game->getScale()));
-	m_shapeField1.setPoint(3, sf::Vector2f(210 * m_game->getScale(), 695 * m_game->getScale()));
+	m_shapeField1.setPoint(0, sf::Vector2f(298 * m_game->getScale(), 583 * m_game->getScale()));
+	m_shapeField1.setPoint(1, sf::Vector2f(429 * m_game->getScale(), 583 * m_game->getScale()));
+	m_shapeField1.setPoint(2, sf::Vector2f(370 * m_game->getScale(), 723 * m_game->getScale()));
+	m_shapeField1.setPoint(3, sf::Vector2f(211 * m_game->getScale(), 723 * m_game->getScale()));
 	Field* m_field1 = new Field(m_game, m_gameScene, m_shapeField1);
+	m_field1->setSelectionPosition(sf::Vector2f(330 * m_game->getScale(), 652 * m_game->getScale()));
 	m_fields.push_back(m_field1);
+
+	for (int i = 0; i < m_fields.size(); i++)
+	{
+		Field* field = m_fields.at(i);
+		field->onClick = [this, field] {
+			if (field->isForPlant() == true && field->isSeedEmpty() == true)
+			{
+				field->plant(m_seedToPlant);
+				m_gameScene->getInventory()->addSeed(m_seedToPlant, -1);
+			}
+			else if (field->isForWater() == true && field->isSeedEmpty() == false)
+			{
+				field->water();
+			}
+			else if (field->isForHarvest() == true && field->isSeedEmpty() == false)
+			{
+				m_game->addAliment(field->harvest());
+			}
+
+			m_dayPanel->endAction();
+			m_dayPanel->useAction();
+			showActionAllowed("end");
+		};
+	}
 
 	//Shape Bar Down
 	m_shapeBarDown.setSize(sf::Vector2f(935 * m_game->getScale(), 75 * m_game->getScale()));
@@ -86,10 +112,14 @@ void GameSceneDayFieldPanel::update(sf::Time deltaTime)
 	m_player->update(deltaTime);
 	m_children->update(deltaTime);
 
+	m_textDay.setString(" " + std::to_string(m_game->getDay()));
+
 	for (int i = 0; i < m_fields.size(); i++)
 	{
 		m_fields.at(i)->update(deltaTime);
 	}
+
+	m_textAliment.setString(" " + std::to_string(m_game->getAliment()));
 }
 
 void GameSceneDayFieldPanel::render(sf::RenderWindow* window)
@@ -111,4 +141,41 @@ void GameSceneDayFieldPanel::render(sf::RenderWindow* window)
 
 	window->draw(m_textTitleAliment);
 	window->draw(m_textAliment);
+}
+
+void GameSceneDayFieldPanel::showActionAllowed(std::string action)
+{
+	if (action == "water")
+	{
+		for (int i = 0; i < m_fields.size(); i++)
+		{
+			m_fields.at(i)->setIsForWater();
+		}
+	}
+	else if (action == "harvest")
+	{
+		for (int i = 0; i < m_fields.size(); i++)
+		{
+			m_fields.at(i)->setIsForHarvest();
+		}
+	}
+	else if (action == "end")
+	{
+		for (int i = 0; i < m_fields.size(); i++)
+		{
+			m_fields.at(i)->endSelection();
+		}
+	}
+	else
+	{
+		for (int i = 0; i < m_fields.size(); i++)
+		{
+			m_fields.at(i)->setIsForPlant();
+		}
+
+		if (action == "eggplant")
+		{
+			m_seedToPlant = action;
+		}
+	}
 }

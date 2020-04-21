@@ -69,6 +69,9 @@
     <ClCompile Include="field\Field.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="scene\ui\SeedInventoryButton.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -122,6 +125,9 @@
     <ClInclude Include="field\Field.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="scene\ui\SeedInventoryButton.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="openal32.dll" />
@@ -155,11 +161,22 @@
     <Image Include="asset\Visages.png">
       <Filter>Fichiers de ressources</Filter>
     </Image>
-    <Image Include="asset\Champs.bmp">
+    <Image Include="asset\Champs.png">
       <Filter>Fichiers de ressources</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="asset\Eternity Time.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="asset\blop_1-pressed.wav">
+      <Filter>Fichiers de ressources</Filter>
+    </Media>
+    <Media Include="asset\blop_2-over.wav">
+      <Filter>Fichiers de ressources</Filter>
+    </Media>
+    <Media Include="asset\Music-title.wav">
+      <Filter>Fichiers de ressources</Filter>
+    </Media>
   </ItemGroup>
 </Project>

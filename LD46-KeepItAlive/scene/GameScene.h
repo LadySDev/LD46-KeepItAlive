@@ -10,6 +10,7 @@ class Game;
 class GameSceneDayPanel;
 
 #include "ui/Button.h"
+class Button;
 
 #include "ui/GameSceneMenuPanel.h"
 class GameSceneMenuPanel;

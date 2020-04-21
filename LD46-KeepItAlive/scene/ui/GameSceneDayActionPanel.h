@@ -7,19 +7,29 @@ class Game;
 class GameScene;
 
 #include "Button.h"
+class Button;
+
+#include "SeedInventoryButton.h"
+class SeedInventoryButton;
+
+#include "GameSceneDayPanel.h"
+class GameSceneDayPanel;
 
 class GameSceneDayActionPanel
 {
 public:
-	GameSceneDayActionPanel(Game* game, GameScene* gameScene);
+	GameSceneDayActionPanel(Game* game, GameScene* gameScene, GameSceneDayPanel* dayPanel);
 
 	virtual void processEvent(sf::Event event, sf::Vector2f mousePosition);
 	virtual void update(sf::Time deltaTime);
 	virtual void render(sf::RenderWindow* window);
 
+	void useAction();
+	void endAction();
 private:
 	Game* m_game;
 	GameScene* m_gameScene;
+	GameSceneDayPanel* m_dayPanel;
 	SeedManager* m_seedManager;
 	Inventory* m_inventory;
 
@@ -29,13 +39,14 @@ private:
 
 	sf::Text m_textActions;
 	std::vector<sf::RectangleShape> m_shapeActions;
+	int m_action;
 
 	Button* m_btnShop;
 
 	//INVENTORY
 	sf::Text m_textInventory;
 	//Seed
-	std::vector<Button*> m_btnSeeds;
+	std::vector<SeedInventoryButton*> m_btnSeeds;
 	//Bar
 	sf::RectangleShape m_shapeBar;
 	//Other

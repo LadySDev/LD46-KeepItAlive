@@ -162,6 +162,7 @@
     <ClCompile Include="scene\ui\GameSceneDayPanel.cpp" />
     <ClCompile Include="scene\ui\GameSceneMenuPanel.cpp" />
     <ClCompile Include="scene\ui\MainTitlePanel.cpp" />
+    <ClCompile Include="scene\ui\SeedInventoryButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="character\Children.h" />
@@ -181,6 +182,7 @@
     <ClInclude Include="scene\ui\Button.h" />
     <ClInclude Include="scene\ui\GameSceneMenuPanel.h" />
     <ClInclude Include="scene\ui\MainTitlePanel.h" />
+    <ClInclude Include="scene\ui\SeedInventoryButton.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="openal32.dll" />
@@ -196,7 +198,7 @@
     <None Include="sfml-window-d-2.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="asset\Champs.bmp" />
+    <Image Include="asset\Champs.png" />
     <Image Include="asset\Ecran_titre_1.2.bmp" />
     <Image Include="asset\GameDayActions.png" />
     <Image Include="asset\GameDayField.png" />
@@ -206,6 +208,11 @@
   </ItemGroup>
   <ItemGroup>
     <Font Include="asset\Eternity Time.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="asset\blop_1-pressed.wav" />
+    <Media Include="asset\blop_2-over.wav" />
+    <Media Include="asset\Music-title.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

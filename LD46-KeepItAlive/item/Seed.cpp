@@ -8,6 +8,11 @@ Seed::Seed(std::string name, int price, int aliment, int waterFrequency)
 	m_waterFrequency = waterFrequency;
 }
 
+std::string Seed::getName()
+{
+	return m_name;
+}
+
 int Seed::getAlimentQuantity()
 {
 	return m_aliment;

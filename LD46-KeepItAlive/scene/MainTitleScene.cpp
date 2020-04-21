@@ -25,3 +25,8 @@ void MainTitleScene::render(sf::RenderWindow* window)
 {
 	m_panel->render(window);
 }
+
+void MainTitleScene::stopMusic()
+{
+	m_panel->stopMusic();
+}

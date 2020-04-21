@@ -5,10 +5,10 @@ GameSceneMenuPanel::GameSceneMenuPanel(Game* game, GameScene* gameScene)
 	m_game = game;
 	m_gameScene = gameScene;
 
-	m_shape.setSize(sf::Vector2f(300 * m_game->getScale(), 300 * m_game->getScale()));
+	m_shape.setSize(sf::Vector2f(1920 * m_game->getScale(), 1080 * m_game->getScale()));
 	m_shape.setPosition(sf::Vector2f(m_game->getSize().x / 2, m_game->getSize().y / 2));
 	m_shape.setOrigin(sf::Vector2f(m_shape.getGlobalBounds().width / 2, m_shape.getGlobalBounds().height / 2));
-	m_shape.setFillColor(sf::Color::White);
+	m_shape.setFillColor(sf::Color(102, 102, 102, 200));
 
 	m_colorText = sf::Color::White;
 
@@ -25,7 +25,7 @@ GameSceneMenuPanel::GameSceneMenuPanel(Game* game, GameScene* gameScene)
 	textResume.setPosition(sf::Vector2f(shapeResume.getPosition().x, shapeResume.getPosition().y));
 	textResume.setOrigin(sf::Vector2f(textResume.getGlobalBounds().width / 2, textResume.getGlobalBounds().height / 2));
 	
-	m_btnResume = new Button(shapeResume, textResume);
+	m_btnResume = new Button(m_game, shapeResume, textResume);
 	m_btnResume->onClick = [this] {
 		m_gameScene->inactiveMenu();
 	};
@@ -43,7 +43,7 @@ GameSceneMenuPanel::GameSceneMenuPanel(Game* game, GameScene* gameScene)
 	textNewGame.setPosition(sf::Vector2f(shapeNewGame.getPosition().x, shapeNewGame.getPosition().y));
 	textNewGame.setOrigin(sf::Vector2f(textNewGame.getGlobalBounds().width / 2, textNewGame.getGlobalBounds().height / 2));
 	
-	m_btnNewGame = new Button(shapeNewGame, textNewGame);
+	m_btnNewGame = new Button(m_game, shapeNewGame, textNewGame);
 	m_btnNewGame->onClick = [this] {
 		m_game->launchGameScene();
 	};
@@ -61,7 +61,7 @@ GameSceneMenuPanel::GameSceneMenuPanel(Game* game, GameScene* gameScene)
 	textTitle.setPosition(sf::Vector2f(shapeTitle.getPosition().x, shapeTitle.getPosition().y));
 	textTitle.setOrigin(sf::Vector2f(textTitle.getGlobalBounds().width / 2, textTitle.getGlobalBounds().height / 2));
 
-	m_btnTitle = new Button(shapeTitle, textTitle);
+	m_btnTitle = new Button(m_game, shapeTitle, textTitle);
 	m_btnTitle->onClick = [this] {
 		m_game->launchMainTitleScene();
 	};
@@ -79,7 +79,7 @@ GameSceneMenuPanel::GameSceneMenuPanel(Game* game, GameScene* gameScene)
 	textQuit.setPosition(sf::Vector2f(shapeQuit.getPosition().x, shapeQuit.getPosition().y));
 	textQuit.setOrigin(sf::Vector2f(textQuit.getGlobalBounds().width / 2, textQuit.getGlobalBounds().height / 2));
 
-	m_btnQuit = new Button(shapeQuit, textQuit);
+	m_btnQuit = new Button(m_game, shapeQuit, textQuit);
 	m_btnQuit->onClick = [this] {
 		m_game->close();
 	};

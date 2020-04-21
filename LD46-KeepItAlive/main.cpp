@@ -2,7 +2,7 @@
 
 int main()
 {
-	int index;
+	int index = -1;
 	float scale = 1;
 	//Video Mode
 	std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
@@ -21,11 +21,18 @@ int main()
 			index = i;
 			scale = (1280.f/1920.f);
 			break;
-
 		}
+		
 	}
 	
-	Game* game = new Game(modes[index].width, modes[index].height, "LD46 Keep It Alive", scale);
+	if (index != -1)
+	{
+		Game* game = new Game(modes[index].width, modes[index].height, "LD46 Keep It Alive", scale);
+	}
+	else
+	{
+		Game* game = new Game(1280, 720, "LD46 Keep It Alive", scale);
+	}
 
 	return 0;
 }

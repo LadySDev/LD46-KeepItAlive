@@ -7,6 +7,7 @@ class Seed
 public:
 	Seed(std::string name, int price, int aliment, int waterFrequency);
 
+	std::string getName();
 	int getAlimentQuantity();
 private:
 	std::string m_name;
